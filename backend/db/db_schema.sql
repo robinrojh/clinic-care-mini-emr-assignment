@@ -1,16 +1,16 @@
 CREATE TABLE users (
-    user_id INT PRIMARY KEY,
+    email VARCHAR(255) PRIMARY KEY,
     last_name VARCHAR(255),
     first_name VARCHAR(255)
 );
 
 CREATE TABLE notes (
-    note_id INT PRIMARY KEY,
-    user_id INT,
+    note_id BIGINT PRIMARY KEY,
+    email VARCHAR(255),
     title VARCHAR(255),
     content TEXT,
 
-    FOREIGN KEY (user_id) REFERENCES users(user_id)
+    FOREIGN KEY (email) REFERENCES users(email)
 );
 
 CREATE TABLE codes (

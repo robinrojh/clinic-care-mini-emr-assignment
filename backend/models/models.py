@@ -1,15 +1,15 @@
-from pydantic import BaseModel, StringConstraints, Field
+from pydantic import BaseModel, StringConstraints, Field, EmailStr
 from typing import Annotated, Literal
 from math import floor, log10
 
 class User(BaseModel):
-    user_id: int = Field(strict=True)
+    email: EmailStr = Field(strict=True)
     first_name: Annotated[str, StringConstraints(max_length=255)]
     last_name: Annotated[str, StringConstraints(max_length=255)]
 
 class Note(BaseModel):
     note_id: int = Field(strict=True)
-    user_id: int = Field(strict=True)
+    email: EmailStr
     title: Annotated[str, StringConstraints(min_length=1, max_length=255)]
     content: str
 
