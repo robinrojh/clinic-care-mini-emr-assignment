@@ -1,0 +1,527 @@
+chapter_code|category_code|subcategory_code|title
+I|00|-|Rheumatic fever without heart involvement
+I|01|0|Acute rheumatic pericarditis
+I|01|1|Acute rheumatic endocarditis
+I|01|2|Acute rheumatic myocarditis
+I|01|8|Other acute rheumatic heart disease
+I|01|9|Acute rheumatic heart disease, unspecified
+I|02|0|Rheumatic chorea with heart involvement
+I|02|9|Rheumatic chorea without heart involvement
+I|05|0|Rheumatic mitral stenosis
+I|05|1|Rheumatic mitral insufficiency
+I|05|2|Rheumatic mitral stenosis with insufficiency
+I|05|8|Other rheumatic mitral valve diseases
+I|05|9|Rheumatic mitral valve disease, unspecified
+I|06|0|Rheumatic aortic stenosis
+I|06|1|Rheumatic aortic insufficiency
+I|06|2|Rheumatic aortic stenosis with insufficiency
+I|06|8|Other rheumatic aortic valve diseases
+I|06|9|Rheumatic aortic valve disease, unspecified
+I|07|0|Rheumatic tricuspid stenosis
+I|07|1|Rheumatic tricuspid insufficiency
+I|07|2|Rheumatic tricuspid stenosis and insufficiency
+I|07|8|Other rheumatic tricuspid valve diseases
+I|07|9|Rheumatic tricuspid valve disease, unspecified
+I|08|0|Rheumatic disorders of both mitral and aortic valves
+I|08|1|Rheumatic disorders of both mitral and tricuspid valves
+I|08|2|Rheumatic disorders of both aortic and tricuspid valves
+I|08|3|Combined rheumatic disorders of mitral, aortic and tricuspid valves
+I|08|8|Other rheumatic multiple valve diseases
+I|08|9|Rheumatic multiple valve disease, unspecified
+I|09|0|Rheumatic myocarditis
+I|09|1|Rheumatic diseases of endocardium, valve unspecified
+I|09|2|Chronic rheumatic pericarditis
+I|09|8|Rheumatic heart failure
+I|09|8|Other specified rheumatic heart diseases
+I|09|9|Rheumatic heart disease, unspecified
+I|10|-|Essential (primary) hypertension
+I|11|0|Hypertensive heart disease with heart failure
+I|11|9|Hypertensive heart disease without heart failure
+I|12|0|Hypertensive chronic kidney disease with stage 5 chronic kidney disease or end stage renal disease
+I|12|9|Hypertensive chronic kidney disease with stage 1 through stage 4 chronic kidney disease, or unspecified chronic kidney disease
+I|13|0|Hypertensive heart and chronic kidney disease with heart failure and stage 1 through stage 4 chronic kidney disease, or unspecified chronic kidney disease
+I|13|1|Hypertensive heart and chronic kidney disease without heart failure, with stage 1 through stage 4 chronic kidney disease, or unspecified chronic kidney disease
+I|13|1|Hypertensive heart and chronic kidney disease without heart failure, with stage 5 chronic kidney disease, or end stage renal disease
+I|13|2|Hypertensive heart and chronic kidney disease with heart failure and with stage 5 chronic kidney disease, or end stage renal disease
+I|15|0|Renovascular hypertension
+I|15|1|Hypertension secondary to other renal disorders
+I|15|2|Hypertension secondary to endocrine disorders
+I|15|8|Other secondary hypertension
+I|15|9|Secondary hypertension, unspecified
+I|16|0|Hypertensive urgency
+I|16|1|Hypertensive emergency
+I|16|9|Hypertensive crisis, unspecified
+I|1A|0|Resistant hypertension
+I|20|0|Unstable angina
+I|20|1|Angina pectoris with documented spasm
+I|20|2|Refractory angina pectoris
+I|20|8|Angina pectoris with coronary microvascular dysfunction
+I|20|8|Other forms of angina pectoris
+I|20|9|Angina pectoris, unspecified
+I|21|0|ST elevation (STEMI) myocardial infarction involving left main coronary artery
+I|21|0|ST elevation (STEMI) myocardial infarction involving left anterior descending coronary artery
+I|21|0|ST elevation (STEMI) myocardial infarction involving other coronary artery of anterior wall
+I|21|1|ST elevation (STEMI) myocardial infarction involving right coronary artery
+I|21|1|ST elevation (STEMI) myocardial infarction involving other coronary artery of inferior wall
+I|21|2|ST elevation (STEMI) myocardial infarction involving left circumflex coronary artery
+I|21|2|ST elevation (STEMI) myocardial infarction involving other sites
+I|21|3|ST elevation (STEMI) myocardial infarction of unspecified site
+I|21|4|Non-ST elevation (NSTEMI) myocardial infarction
+I|21|9|Acute myocardial infarction, unspecified
+I|21|A|Myocardial infarction type 2
+I|21|A|Other myocardial infarction type
+I|21|B|Myocardial infarction with coronary microvascular dysfunction
+I|22|0|Subsequent ST elevation (STEMI) myocardial infarction of anterior wall
+I|22|1|Subsequent ST elevation (STEMI) myocardial infarction of inferior wall
+I|22|2|Subsequent non-ST elevation (NSTEMI) myocardial infarction
+I|22|8|Subsequent ST elevation (STEMI) myocardial infarction of other sites
+I|22|9|Subsequent ST elevation (STEMI) myocardial infarction of unspecified site
+I|23|0|Hemopericardium as current complication following acute myocardial infarction
+I|23|1|Atrial septal defect as current complication following acute myocardial infarction
+I|23|2|Ventricular septal defect as current complication following acute myocardial infarction
+I|23|3|Rupture of cardiac wall without hemopericardium as current complication following acute myocardial infarction
+I|23|4|Rupture of chordae tendineae as current complication following acute myocardial infarction
+I|23|5|Rupture of papillary muscle as current complication following acute myocardial infarction
+I|23|6|Thrombosis of atrium, auricular appendage, and ventricle as current complications following acute myocardial infarction
+I|23|7|Postinfarction angina
+I|23|8|Other current complications following acute myocardial infarction
+I|24|0|Acute coronary thrombosis not resulting in myocardial infarction
+I|24|1|Dressler's syndrome
+I|24|8|Acute coronary microvascular dysfunction
+I|24|8|Other forms of acute ischemic heart disease
+I|24|9|Acute ischemic heart disease, unspecified
+I|25|1|Atherosclerotic heart disease of native coronary artery without angina pectoris
+I|25|2|Old myocardial infarction
+I|25|3|Aneurysm of heart
+I|25|4|Coronary artery aneurysm
+I|25|4|Coronary artery dissection
+I|25|5|Ischemic cardiomyopathy
+I|25|6|Silent myocardial ischemia
+I|25|8|Chronic total occlusion of coronary artery
+I|25|8|Coronary atherosclerosis due to lipid rich plaque
+I|25|8|Coronary atherosclerosis due to calcified coronary lesion
+I|25|8|Chronic coronary microvascular dysfunction
+I|25|8|Other forms of chronic ischemic heart disease
+I|25|9|Chronic ischemic heart disease, unspecified
+I|26|0|Septic pulmonary embolism with acute cor pulmonale
+I|26|0|Saddle embolus of pulmonary artery with acute cor pulmonale
+I|26|0|Cement embolism of pulmonary artery with acute cor pulmonale
+I|26|0|Fat embolism of pulmonary artery with acute cor pulmonale
+I|26|0|Other pulmonary embolism with acute cor pulmonale
+I|26|9|Septic pulmonary embolism without acute cor pulmonale
+I|26|9|Saddle embolus of pulmonary artery without acute cor pulmonale
+I|26|9|Single subsegmental thrombotic pulmonary embolism without acute cor pulmonale
+I|26|9|Multiple subsegmental thrombotic pulmonary emboli without acute cor pulmonale
+I|26|9|Cement embolism of pulmonary artery without acute cor pulmonale
+I|26|9|Fat embolism of pulmonary artery without acute cor pulmonale
+I|26|9|Other pulmonary embolism without acute cor pulmonale
+I|27|0|Primary pulmonary hypertension
+I|27|1|Kyphoscoliotic heart disease
+I|27|2|Pulmonary hypertension, unspecified
+I|27|2|Secondary pulmonary arterial hypertension
+I|27|2|Pulmonary hypertension due to left heart disease
+I|27|2|Pulmonary hypertension due to lung diseases and hypoxia
+I|27|2|Chronic thromboembolic pulmonary hypertension
+I|27|2|Other secondary pulmonary hypertension
+I|27|8|Cor pulmonale (chronic)
+I|27|8|Chronic pulmonary embolism
+I|27|8|Eisenmenger's syndrome
+I|27|8|Other specified pulmonary heart diseases
+I|27|9|Pulmonary heart disease, unspecified
+I|28|0|Arteriovenous fistula of pulmonary vessels
+I|28|1|Aneurysm of pulmonary artery
+I|28|8|Other diseases of pulmonary vessels
+I|28|9|Disease of pulmonary vessels, unspecified
+I|30|0|Acute nonspecific idiopathic pericarditis
+I|30|1|Infective pericarditis
+I|30|8|Other forms of acute pericarditis
+I|30|9|Acute pericarditis, unspecified
+I|31|0|Chronic adhesive pericarditis
+I|31|1|Chronic constrictive pericarditis
+I|31|2|Hemopericardium, not elsewhere classified
+I|31|3|Malignant pericardial effusion in diseases classified elsewhere
+I|31|3|Other pericardial effusion (noninflammatory)
+I|31|4|Cardiac tamponade
+I|31|8|Other specified diseases of pericardium
+I|31|9|Disease of pericardium, unspecified
+I|32|-|Pericarditis in diseases classified elsewhere
+I|33|0|Acute and subacute infective endocarditis
+I|33|9|Acute and subacute endocarditis, unspecified
+I|34|0|Nonrheumatic mitral (valve) insufficiency
+I|34|1|Nonrheumatic mitral (valve) prolapse
+I|34|2|Nonrheumatic mitral (valve) stenosis
+I|34|8|Nonrheumatic mitral (valve) annulus calcification
+I|34|8|Other nonrheumatic mitral valve disorders
+I|34|9|Nonrheumatic mitral valve disorder, unspecified
+I|35|0|Nonrheumatic aortic (valve) stenosis
+I|35|1|Nonrheumatic aortic (valve) insufficiency
+I|35|2|Nonrheumatic aortic (valve) stenosis with insufficiency
+I|35|8|Other nonrheumatic aortic valve disorders
+I|35|9|Nonrheumatic aortic valve disorder, unspecified
+I|36|0|Nonrheumatic tricuspid (valve) stenosis
+I|36|1|Nonrheumatic tricuspid (valve) insufficiency
+I|36|2|Nonrheumatic tricuspid (valve) stenosis with insufficiency
+I|36|8|Other nonrheumatic tricuspid valve disorders
+I|36|9|Nonrheumatic tricuspid valve disorder, unspecified
+I|37|0|Nonrheumatic pulmonary valve stenosis
+I|37|1|Nonrheumatic pulmonary valve insufficiency
+I|37|2|Nonrheumatic pulmonary valve stenosis with insufficiency
+I|37|8|Other nonrheumatic pulmonary valve disorders
+I|37|9|Nonrheumatic pulmonary valve disorder, unspecified
+I|38|-|Endocarditis, valve unspecified
+I|39|-|Endocarditis and heart valve disorders in diseases classified elsewhere
+I|40|0|Infective myocarditis
+I|40|1|Isolated myocarditis
+I|40|8|Other acute myocarditis
+I|40|9|Acute myocarditis, unspecified
+I|41|-|Myocarditis in diseases classified elsewhere
+I|42|0|Dilated cardiomyopathy
+I|42|1|Obstructive hypertrophic cardiomyopathy
+I|42|2|Other hypertrophic cardiomyopathy
+I|42|3|Endomyocardial (eosinophilic) disease
+I|42|4|Endocardial fibroelastosis
+I|42|5|Other restrictive cardiomyopathy
+I|42|6|Alcoholic cardiomyopathy
+I|42|7|Cardiomyopathy due to drug and external agent
+I|42|8|Other cardiomyopathies
+I|42|9|Cardiomyopathy, unspecified
+I|43|-|Cardiomyopathy in diseases classified elsewhere
+I|44|0|Atrioventricular block, first degree
+I|44|1|Atrioventricular block, second degree
+I|44|2|Atrioventricular block, complete
+I|44|3|Unspecified atrioventricular block
+I|44|3|Other atrioventricular block
+I|44|4|Left anterior fascicular block
+I|44|5|Left posterior fascicular block
+I|44|6|Unspecified fascicular block
+I|44|6|Other fascicular block
+I|44|7|Left bundle-branch block, unspecified
+I|45|0|Right fascicular block
+I|45|1|Unspecified right bundle-branch block
+I|45|1|Other right bundle-branch block
+I|45|2|Bifascicular block
+I|45|3|Trifascicular block
+I|45|4|Nonspecific intraventricular block
+I|45|5|Other specified heart block
+I|45|6|Pre-excitation syndrome
+I|45|8|Long QT syndrome
+I|45|8|Other specified conduction disorders
+I|45|9|Conduction disorder, unspecified
+I|46|2|Cardiac arrest due to underlying cardiac condition
+I|46|8|Cardiac arrest due to other underlying condition
+I|46|9|Cardiac arrest, cause unspecified
+I|47|0|Re-entry ventricular arrhythmia
+I|47|1|Supraventricular tachycardia, unspecified
+I|47|1|Inappropriate sinus tachycardia, so stated
+I|47|1|Other supraventricular tachycardia
+I|47|2|Ventricular tachycardia, unspecified
+I|47|2|Torsades de pointes
+I|47|2|Other ventricular tachycardia
+I|47|9|Paroxysmal tachycardia, unspecified
+I|48|0|Paroxysmal atrial fibrillation
+I|48|1|Longstanding persistent atrial fibrillation
+I|48|1|Other persistent atrial fibrillation
+I|48|2|Chronic atrial fibrillation, unspecified
+I|48|2|Permanent atrial fibrillation
+I|48|3|Typical atrial flutter
+I|48|4|Atypical atrial flutter
+I|48|9|Unspecified atrial fibrillation
+I|48|9|Unspecified atrial flutter
+I|49|0|Ventricular fibrillation
+I|49|0|Ventricular flutter
+I|49|1|Atrial premature depolarization
+I|49|2|Junctional premature depolarization
+I|49|3|Ventricular premature depolarization
+I|49|4|Unspecified premature depolarization
+I|49|4|Other premature depolarization
+I|49|5|Sick sinus syndrome
+I|49|8|Other specified cardiac arrhythmias
+I|49|9|Cardiac arrhythmia, unspecified
+I|50|1|Left ventricular failure, unspecified
+I|50|2|Unspecified systolic (congestive) heart failure
+I|50|2|Acute systolic (congestive) heart failure
+I|50|2|Chronic systolic (congestive) heart failure
+I|50|2|Acute on chronic systolic (congestive) heart failure
+I|50|3|Unspecified diastolic (congestive) heart failure
+I|50|3|Acute diastolic (congestive) heart failure
+I|50|3|Chronic diastolic (congestive) heart failure
+I|50|3|Acute on chronic diastolic (congestive) heart failure
+I|50|4|Unspecified combined systolic (congestive) and diastolic (congestive) heart failure
+I|50|4|Acute combined systolic (congestive) and diastolic (congestive) heart failure
+I|50|4|Chronic combined systolic (congestive) and diastolic (congestive) heart failure
+I|50|4|Acute on chronic combined systolic (congestive) and diastolic (congestive) heart failure
+I|50|8|Biventricular heart failure
+I|50|8|High output heart failure
+I|50|8|End stage heart failure
+I|50|8|Other heart failure
+I|50|9|Heart failure, unspecified
+I|51|0|Cardiac septal defect, acquired
+I|51|1|Rupture of chordae tendineae, not elsewhere classified
+I|51|2|Rupture of papillary muscle, not elsewhere classified
+I|51|3|Intracardiac thrombosis, not elsewhere classified
+I|51|4|Myocarditis, unspecified
+I|51|5|Myocardial degeneration
+I|51|7|Cardiomegaly
+I|51|8|Takotsubo syndrome
+I|51|8|Other ill-defined heart diseases
+I|51|9|Heart disease, unspecified
+I|52|-|Other heart disorders in diseases classified elsewhere
+I|5A|-|Non-ischemic myocardial injury (non-traumatic)
+I|60|0|Nontraumatic subarachnoid hemorrhage from unspecified carotid siphon and bifurcation
+I|60|0|Nontraumatic subarachnoid hemorrhage from right carotid siphon and bifurcation
+I|60|0|Nontraumatic subarachnoid hemorrhage from left carotid siphon and bifurcation
+I|60|1|Nontraumatic subarachnoid hemorrhage from unspecified middle cerebral artery
+I|60|1|Nontraumatic subarachnoid hemorrhage from right middle cerebral artery
+I|60|1|Nontraumatic subarachnoid hemorrhage from left middle cerebral artery
+I|60|2|Nontraumatic subarachnoid hemorrhage from anterior communicating artery
+I|60|3|Nontraumatic subarachnoid hemorrhage from unspecified posterior communicating artery
+I|60|3|Nontraumatic subarachnoid hemorrhage from right posterior communicating artery
+I|60|3|Nontraumatic subarachnoid hemorrhage from left posterior communicating artery
+I|60|4|Nontraumatic subarachnoid hemorrhage from basilar artery
+I|60|5|Nontraumatic subarachnoid hemorrhage from unspecified vertebral artery
+I|60|5|Nontraumatic subarachnoid hemorrhage from right vertebral artery
+I|60|5|Nontraumatic subarachnoid hemorrhage from left vertebral artery
+I|60|6|Nontraumatic subarachnoid hemorrhage from other intracranial arteries
+I|60|7|Nontraumatic subarachnoid hemorrhage from unspecified intracranial artery
+I|60|8|Other nontraumatic subarachnoid hemorrhage
+I|60|9|Nontraumatic subarachnoid hemorrhage, unspecified
+I|61|0|Nontraumatic intracerebral hemorrhage in hemisphere, subcortical
+I|61|1|Nontraumatic intracerebral hemorrhage in hemisphere, cortical
+I|61|2|Nontraumatic intracerebral hemorrhage in hemisphere, unspecified
+I|61|3|Nontraumatic intracerebral hemorrhage in brain stem
+I|61|4|Nontraumatic intracerebral hemorrhage in cerebellum
+I|61|5|Nontraumatic intracerebral hemorrhage, intraventricular
+I|61|6|Nontraumatic intracerebral hemorrhage, multiple localized
+I|61|8|Other nontraumatic intracerebral hemorrhage
+I|61|9|Nontraumatic intracerebral hemorrhage, unspecified
+I|62|0|Nontraumatic subdural hemorrhage, unspecified
+I|62|0|Nontraumatic acute subdural hemorrhage
+I|62|0|Nontraumatic subacute subdural hemorrhage
+I|62|0|Nontraumatic chronic subdural hemorrhage
+I|62|1|Nontraumatic extradural hemorrhage
+I|62|9|Nontraumatic intracranial hemorrhage, unspecified
+I|63|0|Cerebral infarction due to thrombosis of unspecified precerebral artery
+I|63|0|Cerebral infarction due to thrombosis of basilar artery
+I|63|0|Cerebral infarction due to thrombosis of other precerebral artery
+I|63|1|Cerebral infarction due to embolism of unspecified precerebral artery
+I|63|1|Cerebral infarction due to embolism of basilar artery
+I|63|1|Cerebral infarction due to embolism of other precerebral artery
+I|63|2|Cerebral infarction due to unspecified occlusion or stenosis of unspecified precerebral arteries
+I|63|2|Cerebral infarction due to unspecified occlusion or stenosis of basilar artery
+I|63|2|Cerebral infarction due to unspecified occlusion or stenosis of other precerebral arteries
+I|63|3|Cerebral infarction due to thrombosis of unspecified cerebral artery
+I|63|3|Cerebral infarction due to thrombosis of other cerebral artery
+I|63|4|Cerebral infarction due to embolism of unspecified cerebral artery
+I|63|4|Cerebral infarction due to embolism of other cerebral artery
+I|63|5|Cerebral infarction due to unspecified occlusion or stenosis of unspecified cerebral artery
+I|63|5|Cerebral infarction due to unspecified occlusion or stenosis of other cerebral artery
+I|63|6|Cerebral infarction due to cerebral venous thrombosis, nonpyogenic
+I|63|8|Other cerebral infarction due to occlusion or stenosis of small artery
+I|63|8|Other cerebral infarction
+I|63|9|Cerebral infarction, unspecified
+I|65|0|Occlusion and stenosis of right vertebral artery
+I|65|0|Occlusion and stenosis of left vertebral artery
+I|65|0|Occlusion and stenosis of bilateral vertebral arteries
+I|65|0|Occlusion and stenosis of unspecified vertebral artery
+I|65|1|Occlusion and stenosis of basilar artery
+I|65|2|Occlusion and stenosis of right carotid artery
+I|65|2|Occlusion and stenosis of left carotid artery
+I|65|2|Occlusion and stenosis of bilateral carotid arteries
+I|65|2|Occlusion and stenosis of unspecified carotid artery
+I|65|8|Occlusion and stenosis of other precerebral arteries
+I|65|9|Occlusion and stenosis of unspecified precerebral artery
+I|66|0|Occlusion and stenosis of right middle cerebral artery
+I|66|0|Occlusion and stenosis of left middle cerebral artery
+I|66|0|Occlusion and stenosis of bilateral middle cerebral arteries
+I|66|0|Occlusion and stenosis of unspecified middle cerebral artery
+I|66|1|Occlusion and stenosis of right anterior cerebral artery
+I|66|1|Occlusion and stenosis of left anterior cerebral artery
+I|66|1|Occlusion and stenosis of bilateral anterior cerebral arteries
+I|66|1|Occlusion and stenosis of unspecified anterior cerebral artery
+I|66|2|Occlusion and stenosis of right posterior cerebral artery
+I|66|2|Occlusion and stenosis of left posterior cerebral artery
+I|66|2|Occlusion and stenosis of bilateral posterior cerebral arteries
+I|66|2|Occlusion and stenosis of unspecified posterior cerebral artery
+I|66|3|Occlusion and stenosis of cerebellar arteries
+I|66|8|Occlusion and stenosis of other cerebral arteries
+I|66|9|Occlusion and stenosis of unspecified cerebral artery
+I|67|0|Dissection of cerebral arteries, nonruptured
+I|67|1|Cerebral aneurysm, nonruptured
+I|67|2|Cerebral atherosclerosis
+I|67|3|Progressive vascular leukoencephalopathy
+I|67|4|Hypertensive encephalopathy
+I|67|5|Moyamoya disease
+I|67|6|Nonpyogenic thrombosis of intracranial venous system
+I|67|7|Cerebral arteritis, not elsewhere classified
+I|67|8|Acute cerebrovascular insufficiency
+I|67|8|Cerebral ischemia
+I|67|8|Posterior reversible encephalopathy syndrome
+I|67|8|Other cerebrovascular disease
+I|67|9|Cerebrovascular disease, unspecified
+I|68|0|Cerebral amyloid angiopathy
+I|68|2|Cerebral arteritis in other diseases classified elsewhere
+I|68|8|Other cerebrovascular disorders in diseases classified elsewhere
+I|69|0|Unspecified sequelae of nontraumatic subarachnoid hemorrhage
+I|69|1|Unspecified sequelae of nontraumatic intracerebral hemorrhage
+I|69|2|Unspecified sequelae of other nontraumatic intracranial hemorrhage
+I|69|3|Unspecified sequelae of cerebral infarction
+I|69|8|Unspecified sequelae of other cerebrovascular disease
+I|69|9|Unspecified sequelae of unspecified cerebrovascular disease
+I|70|0|Atherosclerosis of aorta
+I|70|1|Atherosclerosis of renal artery
+I|70|2|Atherosclerosis of native arteries of other extremities with ulceration
+I|70|3|Atherosclerosis of unspecified type of bypass graft(s) of other extremity with ulceration
+I|70|4|Atherosclerosis of autologous vein bypass graft(s) of other extremity with ulceration
+I|70|5|Atherosclerosis of nonautologous biological bypass graft(s) of other extremity with ulceration
+I|70|6|Atherosclerosis of nonbiological bypass graft(s) of other extremity with ulceration
+I|70|7|Atherosclerosis of other type of bypass graft(s) of other extremity with ulceration
+I|70|8|Atherosclerosis of other arteries
+I|70|9|Unspecified atherosclerosis
+I|70|9|Generalized atherosclerosis
+I|70|9|Chronic total occlusion of artery of the extremities
+I|71|0|Dissection of unspecified site of aorta
+I|71|0|Dissection of abdominal aorta
+I|71|0|Dissection of thoracoabdominal aorta
+I|71|1|Thoracic aortic aneurysm, ruptured, unspecified
+I|71|1|Aneurysm of the ascending aorta, ruptured
+I|71|1|Aneurysm of the aortic arch, ruptured
+I|71|1|Aneurysm of the descending thoracic aorta, ruptured
+I|71|2|Thoracic aortic aneurysm, without rupture, unspecified
+I|71|2|Aneurysm of the ascending aorta, without rupture
+I|71|2|Aneurysm of the aortic arch, without rupture
+I|71|2|Aneurysm of the descending thoracic aorta, without rupture
+I|71|3|Abdominal aortic aneurysm, ruptured, unspecified
+I|71|3|Pararenal abdominal aortic aneurysm, ruptured
+I|71|3|Juxtarenal abdominal aortic aneurysm, ruptured
+I|71|3|Infrarenal abdominal aortic aneurysm, ruptured
+I|71|4|Abdominal aortic aneurysm, without rupture, unspecified
+I|71|4|Pararenal abdominal aortic aneurysm, without rupture
+I|71|4|Juxtarenal abdominal aortic aneurysm, without rupture
+I|71|4|Infrarenal abdominal aortic aneurysm, without rupture
+I|71|5|Thoracoabdominal aortic aneurysm, ruptured, unspecified
+I|71|5|Supraceliac aneurysm of the thoracoabdominal aorta, ruptured
+I|71|5|Paravisceral aneurysm of the thoracoabdominal aorta, ruptured
+I|71|6|Thoracoabdominal aortic aneurysm, without rupture, unspecified
+I|71|6|Supraceliac aneurysm of the thoracoabdominal aorta, without rupture
+I|71|6|Paravisceral aneurysm of the thoracoabdominal aorta, without rupture
+I|71|8|Aortic aneurysm of unspecified site, ruptured
+I|71|9|Aortic aneurysm of unspecified site, without rupture
+I|72|0|Aneurysm of carotid artery
+I|72|1|Aneurysm of artery of upper extremity
+I|72|2|Aneurysm of renal artery
+I|72|3|Aneurysm of iliac artery
+I|72|4|Aneurysm of artery of lower extremity
+I|72|5|Aneurysm of other precerebral arteries
+I|72|6|Aneurysm of vertebral artery
+I|72|8|Aneurysm of other specified arteries
+I|72|9|Aneurysm of unspecified site
+I|73|0|Raynaud's syndrome without gangrene
+I|73|0|Raynaud's syndrome with gangrene
+I|73|1|Thromboangiitis obliterans [Buerger's disease]
+I|73|8|Erythromelalgia
+I|73|8|Other specified peripheral vascular diseases
+I|73|9|Peripheral vascular disease, unspecified
+I|74|0|Saddle embolus of abdominal aorta
+I|74|0|Other arterial embolism and thrombosis of abdominal aorta
+I|74|1|Embolism and thrombosis of unspecified parts of aorta
+I|74|1|Embolism and thrombosis of thoracic aorta
+I|74|1|Embolism and thrombosis of other parts of aorta
+I|74|2|Embolism and thrombosis of arteries of the upper extremities
+I|74|3|Embolism and thrombosis of arteries of the lower extremities
+I|74|4|Embolism and thrombosis of arteries of extremities, unspecified
+I|74|5|Embolism and thrombosis of iliac artery
+I|74|8|Embolism and thrombosis of other arteries
+I|74|9|Embolism and thrombosis of unspecified artery
+I|75|8|Atheroembolism of kidney
+I|75|8|Atheroembolism of other site
+I|76|-|Septic arterial embolism
+I|77|0|Arteriovenous fistula, acquired
+I|77|1|Stricture of artery
+I|77|2|Rupture of artery
+I|77|3|Arterial fibromuscular dysplasia
+I|77|4|Celiac artery compression syndrome
+I|77|5|Necrosis of artery
+I|77|6|Arteritis, unspecified
+I|77|7|Dissection of unspecified artery
+I|77|7|Dissection of carotid artery
+I|77|7|Dissection of iliac artery
+I|77|7|Dissection of renal artery
+I|77|7|Dissection of vertebral artery
+I|77|7|Dissection of other precerebral arteries
+I|77|7|Dissection of artery of upper extremity
+I|77|7|Dissection of artery of lower extremity
+I|77|7|Dissection of other specified artery
+I|77|8|Antineutrophilic cytoplasmic antibody [ANCA] vasculitis
+I|77|8|Other specified disorders of arteries and arterioles
+I|77|9|Disorder of arteries and arterioles, unspecified
+I|78|0|Hereditary hemorrhagic telangiectasia
+I|78|1|Nevus, non-neoplastic
+I|78|8|Other diseases of capillaries
+I|78|9|Disease of capillaries, unspecified
+I|79|0|Aneurysm of aorta in diseases classified elsewhere
+I|79|1|Aortitis in diseases classified elsewhere
+I|79|8|Other disorders of arteries, arterioles and capillaries in diseases classified elsewhere
+I|80|0|Phlebitis and thrombophlebitis of superficial vessels of unspecified lower extremity
+I|80|0|Phlebitis and thrombophlebitis of superficial vessels of right lower extremity
+I|80|0|Phlebitis and thrombophlebitis of superficial vessels of left lower extremity
+I|80|0|Phlebitis and thrombophlebitis of superficial vessels of lower extremities, bilateral
+I|80|1|Phlebitis and thrombophlebitis of unspecified femoral vein
+I|80|1|Phlebitis and thrombophlebitis of right femoral vein
+I|80|1|Phlebitis and thrombophlebitis of left femoral vein
+I|80|1|Phlebitis and thrombophlebitis of femoral vein, bilateral
+I|80|3|Phlebitis and thrombophlebitis of lower extremities, unspecified
+I|80|8|Phlebitis and thrombophlebitis of other sites
+I|80|9|Phlebitis and thrombophlebitis of unspecified site
+I|81|-|Portal vein thrombosis
+I|82|0|Budd-Chiari syndrome
+I|82|1|Thrombophlebitis migrans
+I|82|3|Embolism and thrombosis of renal vein
+I|82|9|Acute embolism and thrombosis of unspecified vein
+I|82|9|Chronic embolism and thrombosis of unspecified vein
+I|83|1|Varicose veins of unspecified lower extremity with inflammation
+I|83|1|Varicose veins of right lower extremity with inflammation
+I|83|1|Varicose veins of left lower extremity with inflammation
+I|83|9|Asymptomatic varicose veins of unspecified lower extremity
+I|83|9|Asymptomatic varicose veins of right lower extremity
+I|83|9|Asymptomatic varicose veins of left lower extremity
+I|83|9|Asymptomatic varicose veins of bilateral lower extremities
+I|85|0|Esophageal varices without bleeding
+I|85|0|Esophageal varices with bleeding
+I|85|1|Secondary esophageal varices without bleeding
+I|85|1|Secondary esophageal varices with bleeding
+I|86|0|Sublingual varices
+I|86|1|Scrotal varices
+I|86|2|Pelvic varices
+I|86|3|Vulval varices
+I|86|4|Gastric varices
+I|86|8|Varicose veins of other specified sites
+I|87|1|Compression of vein
+I|87|2|Venous insufficiency (chronic) (peripheral)
+I|87|8|Other specified disorders of veins
+I|87|9|Disorder of vein, unspecified
+I|88|0|Nonspecific mesenteric lymphadenitis
+I|88|1|Chronic lymphadenitis, except mesenteric
+I|88|8|Other nonspecific lymphadenitis
+I|88|9|Nonspecific lymphadenitis, unspecified
+I|89|0|Lymphedema, not elsewhere classified
+I|89|1|Lymphangitis
+I|89|8|Other specified noninfective disorders of lymphatic vessels and lymph nodes
+I|89|9|Noninfective disorder of lymphatic vessels and lymph nodes, unspecified
+I|95|0|Idiopathic hypotension
+I|95|1|Orthostatic hypotension
+I|95|2|Hypotension due to drugs
+I|95|3|Hypotension of hemodialysis
+I|95|8|Postprocedural hypotension
+I|95|8|Other hypotension
+I|95|9|Hypotension, unspecified
+I|96|-|Gangrene, not elsewhere classified
+I|97|0|Postcardiotomy syndrome
+I|97|2|Postmastectomy lymphedema syndrome
+I|97|3|Postprocedural hypertension
+I|97|4|Intraoperative hemorrhage and hematoma of a circulatory system organ or structure complicating other procedure
+I|97|5|Accidental puncture and laceration of a circulatory system organ or structure during a circulatory system procedure
+I|97|5|Accidental puncture and laceration of a circulatory system organ or structure during other procedure
+I|97|8|Other intraoperative complications of the circulatory system, not elsewhere classified
+I|97|8|Other postprocedural complications and disorders of the circulatory system, not elsewhere classified
+I|99|8|Other disorder of circulatory system
+I|99|9|Unspecified disorder of circulatory system

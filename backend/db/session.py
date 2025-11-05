@@ -1,13 +1,11 @@
-import psycopg2
+import sqlalchemy
 
-DB_NAME = "postgres"
-DB_USER = "test"
-DB_PASS = "postgres"
+DB_NAME = "clinic_care"
+DB_USER = "postgres"
+DB_PASS = "asdfasdf"
 DB_HOST = "localhost"
 DB_PORT = "5432"
 
-try:
-    conn = psycopg2.connect(database=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST, port=DB_PORT)
-    print("Database connection successful!")
-except:
-    print("Database connection failed.")
+database_url = f"postgresql+psycopg2://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+
+engine = sqlalchemy.create_engine(database_url)
