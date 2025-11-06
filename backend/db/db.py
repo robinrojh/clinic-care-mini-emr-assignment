@@ -17,6 +17,8 @@ class User(Base):
     email: Mapped[str] = mapped_column(String(255), unique=True, index=True, nullable=False, primary_key=True)
     first_name: Mapped[str] = mapped_column(String(255), nullable=False)
     last_name: Mapped[str] = mapped_column(String(255), nullable=False)
+    hashed_pw: Mapped[str] = mapped_column(String(255), nullable=False)
+
     notes: Mapped[List["Note"]] = relationship("Note", back_populates="user")
 
     def __repr__(self) -> str:

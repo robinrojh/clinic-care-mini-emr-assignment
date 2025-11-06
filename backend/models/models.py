@@ -1,6 +1,13 @@
 from pydantic import BaseModel, StringConstraints, Field, EmailStr, ConfigDict, computed_field
 from typing import Annotated, Literal, Optional, List
 
+class TokenModel(BaseModel):
+    access_token: str
+    token_type: str = "bearer"
+
+class TokenData(BaseModel):
+    username: str | None = None
+
 class UserModel(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
@@ -8,6 +15,11 @@ class UserModel(BaseModel):
     first_name: Annotated[str, StringConstraints(max_length=255)]
     last_name: Annotated[str, StringConstraints(max_length=255)]
 
+class UserModelInDB(UserModel):
+    hashed_pw: str
+
+class UserCreateModel(UserModel):
+    password: str
 
 class NoteCreateModel(BaseModel):
     email: EmailStr

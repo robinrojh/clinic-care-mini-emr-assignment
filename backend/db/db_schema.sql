@@ -1,7 +1,8 @@
 CREATE TABLE users (
     email VARCHAR(255) PRIMARY KEY,
     last_name VARCHAR(255),
-    first_name VARCHAR(255)
+    first_name VARCHAR(255),
+    hashed_pw VARCHAR(1000)
 );
 
 CREATE TABLE notes (
