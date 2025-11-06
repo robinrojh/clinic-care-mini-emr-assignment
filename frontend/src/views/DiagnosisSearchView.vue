@@ -39,26 +39,40 @@ async function searchDiagnosis() {
     <form @submit.prevent="searchDiagnosis" class="form-container">
       <div class="form-group">
         <label>Chapter Code:</label>
-        <input v-model="chapter_code" type="text" />
+        <input v-model="chapter_code" type="text" class="form-control" />
       </div>
       <div class="form-group">
         <label>Category Code:</label>
-        <input v-model="category_code" type="text" />
+        <input v-model="category_code" type="text" class="form-control" />
       </div>
       <div class="form-group">
         <label>Subcategory Code:</label>
-        <input v-model="subcategory_code" type="text" />
+        <input v-model="subcategory_code" type="text" class="form-control" />
       </div>
-      <button type="submit" :disabled="loading">
+      <button type="submit" :disabled="loading" class="btn btn-primary">
         {{ loading ? 'Searching...' : 'Search' }}
       </button>
     </form>
 
+    <div v-if="loading" class="loading-state">Loading...</div>
     <div v-if="error" class="error-message">{{ error }}</div>
 
     <div v-if="results.length > 0" class="results-container">
       <h3>Results</h3>
       <pre>{{ results }}</pre>
     </div>
+    <div v-else-if="!loading && !error" class="empty-state">
+      Submit a search to see results.
+    </div>
   </div>
 </template>
+
+<style scoped>
+.form-container {
+  max-width: 500px;
+}
+
+.results-container {
+  margin-top: var(--spacing);
+}
+</style>
