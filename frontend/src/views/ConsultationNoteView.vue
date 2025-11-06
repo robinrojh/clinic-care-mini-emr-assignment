@@ -1,29 +1,35 @@
 <script setup lang="ts">
-import { ref, reactive, onMounted } from 'vue';
+import { ref, reactive, onMounted, watch } from 'vue';
 import apiClient from '@/api';
-import type { Consultation, ConsultationForm } from '@/types.ts';
+import type { Consultation, ConsultationForm, DiagnosisCode } from '@/types';
 
 const defaultForm: ConsultationForm = {
   patient_id: 1,
   doctor_notes: '',
-  user_email: 'rygrobin@gmail.com', // Default email for testing
+  user_email: 'rygrobin@gmail.com',
   chapter_code: '',
   category_code: '',
   subcategory_code: '',
 };
-
 const newConsultation = reactive<ConsultationForm>({ ...defaultForm });
 
 const submitting = ref<boolean>(false);
 const submitError = ref<string | null>(null);
 
 async function saveConsultation() {
+  if (!selectedCode.value) {
+    submitError.value = 'Please search for and select a diagnosis code.';
+    return;
+  }
+  
   submitting.value = true;
   submitError.value = null;
+
   try {
     await apiClient.post('/consultation', newConsultation);
     
     Object.assign(newConsultation, defaultForm);
+    selectedCode.value = null;
     getConsultations(); 
 
   } catch (err: any) {
@@ -48,10 +54,81 @@ async function getConsultations() {
     loadingList.value = false;
   }
 }
-
 onMounted(() => {
   getConsultations();
 });
+
+const searchQuery = ref<string>('');
+const searchResults = ref<DiagnosisCode[]>([]);
+const searchLoading = ref<boolean>(false);
+const searchError = ref<string | null>(null);
+const selectedCode = ref<DiagnosisCode | null>(null);
+const debounceTimer = ref<number | null>(null);
+
+watch(searchQuery, (newQuery) => {
+  if (debounceTimer.value) {
+    clearTimeout(debounceTimer.value);
+  }
+
+  searchLoading.value = true;
+  
+  debounceTimer.value = window.setTimeout(async () => {
+    try {
+      searchError.value = null;
+      if (!newQuery || newQuery.length == 0) {
+        searchResults.value = []
+        searchError.value = "You need at least one character."
+        return;
+      }
+
+      if (newQuery.length > 4) {
+        searchResults.value = []
+        searchError.value = "Too long! Keep codes less than 5 characters."
+        return;
+      }
+      else {
+        const chapter_code = newQuery[0]
+        const category_code = newQuery.length >= 2 ? newQuery.substring(1, 3) : ''
+        const subcategory_code = newQuery.length >= 3 ? newQuery[3] : ''
+        const response = await apiClient.get<DiagnosisCode[]>('/diagnosis', {
+          params: {
+            chapter_code: chapter_code,
+            category_code: category_code,
+            subcategory_code: subcategory_code,
+          },
+        });
+        searchResults.value = response.data
+      }
+
+      const response = await apiClient.get<DiagnosisCode[]>('/diagnosis', {
+        
+      });
+      searchResults.value = response.data;
+    } catch (err: any) {
+      searchError.value = 'Search failed: ' + (err.response?.data?.detail || err.message);
+    } finally {
+      searchLoading.value = false;
+    }
+  }, 500);
+});
+
+// Function to select a code from the results
+function selectCode(code: DiagnosisCode) {
+  selectedCode.value = code;
+  
+  newConsultation.chapter_code = code.chapter_code;
+  newConsultation.category_code = code.category_code;
+  newConsultation.subcategory_code = code.subcategory_code;
+
+  searchQuery.value = '';
+  searchResults.value = [];
+}
+
+function formatCode(code: DiagnosisCode): string {
+  const base = `${code.chapter_code}${code.category_code}`;
+  const sub = code.subcategory_code === 'X' ? '' : `.${code.subcategory_code}`;
+  return `${base}${sub} - ${code.title}`;
+}
 </script>
 
 <template>
@@ -71,21 +148,43 @@ onMounted(() => {
           <label>Doctor Notes:</label>
           <textarea v-model="newConsultation.doctor_notes"></textarea>
         </div>
+        
         <hr>
-        <div class="form-group">
-          <label>Chapter Code:</label>
-          <input v-model="newConsultation.chapter_code" type="text" />
+        
+        <h3>Diagnosis Code</h3>
+        
+        <div v-if="selectedCode" class="selected-code">
+          <pre>{{ formatCode(selectedCode) }}</pre>
+          <button type="button" @click="selectedCode = null" class="remove-btn">
+            Change
+          </button>
         </div>
-        <div class="form-group">
-          <label>Category Code:</label>
-          <input v-model="newConsultation.category_code" type="text" />
+        
+        <div v-else>
+          <div class="form-group">
+            <label>Search Code (e.g., "fever"):</label>
+            <input 
+              v-model.trim="searchQuery" 
+              type="text" 
+              placeholder="Start typing to search..."
+            />
+          </div>
+          <div v-if="searchLoading">Searching...</div>
+          <div v-if="searchError" class="error-message">{{ searchError }}</div>
+
+          <ul v-if="searchResults.length > 0" class="search-results">
+            <li 
+              v-for="code in searchResults" 
+              :key="`${code.chapter_code}-${code.category_code}-${code.subcategory_code}`"
+              @click="selectCode(code)"
+            >
+              {{ formatCode(code) }}
+            </li>
+          </ul>
         </div>
-        <div class="form-group">
-          <label>Subcategory Code:</label>
-          <input v-model="newConsultation.subcategory_code" type="text" />
-        </div>
-        <button type="submit" :disabled="submitting">
-          {{ submitting ? 'Saving...' : 'Save' }}
+        
+        <button type-="submit" :disabled="submitting" class="submit-btn">
+          {{ submitting ? 'Saving...' : 'Save Consultation' }}
         </button>
         <div v-if="submitError" class="error-message">{{ submitError }}</div>
       </form>
@@ -110,7 +209,8 @@ onMounted(() => {
   display: flex;
   gap: 30px;
 }
-.form-container, .list-container {
+.form-container,
+.list-container {
   flex: 1;
 }
 .list-container ul {
@@ -123,5 +223,54 @@ onMounted(() => {
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 4px;
+}
+hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 20px 0;
+}
+.submit-btn {
+  margin-top: 20px;
+}
+
+/* New Search Styles */
+.search-results {
+  list-style: none;
+  padding: 0;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+.search-results li {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+.search-results li:last-child {
+  border-bottom: none;
+}
+.search-results li:hover {
+  background-color: #f0f0f0;
+}
+.selected-code {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.selected-code pre {
+  flex-grow: 1;
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.remove-btn {
+  background-color: #e74c3c;
+  font-size: 0.8rem;
+  padding: 5px 8px;
+}
+.remove-btn:hover {
+  background-color: #c0392b;
 }
 </style>
