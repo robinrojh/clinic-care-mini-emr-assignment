@@ -2,18 +2,16 @@ export interface DiagnosisCode {
   chapter_code: string;
   category_code: string;
   subcategory_code: string;
-  [key: string]: any;
+  title: string | null;
 }
 
-export interface ConsultationForm {
-  patient_id: number;
-  doctor_notes: string;
-  user_email: string;
-  chapter_code: string;
-  category_code: string;
-  subcategory_code: string;
+export interface NoteForm {
+  title: string;
+  content: string;
+  email: string;
+  codes: DiagnosisCode[];
 }
 
-export interface Consultation extends ConsultationForm {
-  consultation_id: number; 
+export interface Note extends NoteForm {
+  note_id: number;
 }

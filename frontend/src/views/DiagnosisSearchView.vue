@@ -23,7 +23,7 @@ async function searchDiagnosis() {
         subcategory_code: subcategory_code.value,
       },
     });
-    console.log(response)
+
     results.value = response.data;
   } catch (err: any) {
     error.value = 'Failed to fetch diagnosis: ' + (err.response?.data?.detail || err.message);
