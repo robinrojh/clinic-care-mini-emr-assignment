@@ -1,6 +1,5 @@
 from pydantic import BaseModel, StringConstraints, Field, EmailStr, ConfigDict
-from typing import Annotated, Literal, Optional
-from math import floor, log10
+from typing import Annotated, Literal, Optional, List
 
 class UserModel(BaseModel):
     model_config = ConfigDict(from_attributes=True)
@@ -10,6 +9,12 @@ class UserModel(BaseModel):
     last_name: Annotated[str, StringConstraints(max_length=255)]
 
 
+class NoteCreateModel(BaseModel):
+    email: EmailStr
+    title: Annotated[str, StringConstraints(min_length=1, max_length=255)]
+    content: Optional[str]
+    codes: List['CodeModel']
+
 class NoteModel(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
@@ -17,14 +22,15 @@ class NoteModel(BaseModel):
     email: EmailStr
     title: Annotated[str, StringConstraints(min_length=1, max_length=255)]
     content: Optional[str]
+    codes: List['CodeModel']
 
 class CodeModel(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
     chapter_code: Annotated[str, StringConstraints(max_length=1, to_upper=True)]
     category_code: Annotated[str, StringConstraints(max_length=2, min_length=2, to_upper=True)]
-    subcategory_code: Annotated[str, StringConstraints(max_length=1, to_upper=True)] = Field(default='X')
-    title: Annotated[str, StringConstraints(min_length=1, max_length=255)]
+    subcategory_code: Annotated[str, StringConstraints(max_length=1, to_upper=True)] = Field(default='-')
+    title: Annotated[str, StringConstraints(max_length=255)]
     description: Optional[str]
 
     @classmethod

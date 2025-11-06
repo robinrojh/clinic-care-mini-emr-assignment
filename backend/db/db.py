@@ -1,4 +1,4 @@
-from sqlalchemy import String, Integer, Text, ForeignKey, PrimaryKeyConstraint, create_engine, Table, Column
+from sqlalchemy import String, Integer, Text, ForeignKey, PrimaryKeyConstraint, create_engine, Table, Column, ForeignKeyConstraint
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship, sessionmaker, Session
 from typing import List, Generator
 
@@ -20,32 +20,38 @@ class User(Base):
     notes: Mapped[List["Note"]] = relationship("Note", back_populates="user")
 
     def __repr__(self) -> str:
-        return f"<User(user_id={self.user_id!r}, email={self.email!r})>"
-
-class NotesCodes(Base):
-    __tablename__ = "notes_codes"
-
-    note_id: Mapped[int] = mapped_column(ForeignKey("Note.note_id"), primary_key=True)
-    chapter_code: Mapped[str] = mapped_column(ForeignKey("Code.chapter_code"), primary_key=True)
-    category_code: Mapped[str] = mapped_column(ForeignKey("Code.category_code"), primary_key=True)
-    subcategory_code: Mapped[str] = mapped_column(ForeignKey("Code.subcategory_code"), primary_key=True, default='-')
-
-    note: Mapped["Note"] = relationship(back_populates='codes')
-    code: Mapped["Code"] = relationship(back_populates='notes')
-
+        return f"<User(email={self.email!r})>"
+    
+notes_codes_table = Table(
+    "notes_codes",
+    Base.metadata,
+    Column("note_id", Integer, ForeignKey("notes.note_id"), primary_key=True),
+    
+    Column("chapter_code", String(1), primary_key=True),
+    Column("category_code", String(2), primary_key=True),
+    Column("subcategory_code", String(1), primary_key=True, default='-'),
+    
+    ForeignKeyConstraint(
+        ["chapter_code", "category_code", "subcategory_code"],
+        ["codes.chapter_code", "codes.category_code", "codes.subcategory_code"],
+    )
+)
 class Note(Base):
     __tablename__ = "notes"
     
-    note_id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    note_id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
     title: Mapped[str] = mapped_column(String(255), nullable=False)
     content: Mapped[str] = mapped_column(Text, nullable=True)
     
 
-    user_id: Mapped[int] = mapped_column(ForeignKey("users.user_id"), nullable=False)
+    email: Mapped[str] = mapped_column(ForeignKey("users.email"), nullable=False)
     user: Mapped["User"] = relationship("User", back_populates="notes")
 
-    codes: Mapped[List["NotesCodes"]] = relationship(back_populates="note")
-
+    codes: Mapped[List["Code"]] = relationship(
+            "Code",
+            secondary=notes_codes_table,
+            back_populates="notes"
+        )
 
     def __repr__(self) -> str:
         return f"<Note(note_id={self.note_id!r}, title={self.title!r})>"
@@ -61,8 +67,12 @@ class Code(Base):
     title: Mapped[str] = mapped_column(String(255), nullable=False)
     description: Mapped[str] = mapped_column(Text, nullable=True)
 
-    notes: Mapped[List["NotesCodes"]] = relationship(back_populates="code")
-
+    notes: Mapped[List["Note"]] = relationship(
+            "Note",
+            secondary=notes_codes_table,
+            back_populates="codes"
+        )
+    
     def __repr__(self) -> str:
         return f"<Code(code={self.chapter_code}{self.category_code}.{self.subcategory_code})>"
 
@@ -91,14 +101,9 @@ def init_db():
     Initializes the database by creating all tables.
     """
     try:
-        print("Importing models...")
-        from models.models import UserModel, NoteModel, CodeModel 
-
         print("Creating database tables...")
         Base.metadata.create_all(bind=engine)
         print("Database tables created successfully.")
-    except ImportError:
-        print("Error: Could not import models. Make sure 'models/models.py' exists.")
     except Exception as e:
         print(f"An error occurred during DB initialization: {e}")
 
