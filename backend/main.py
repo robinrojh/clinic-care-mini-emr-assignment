@@ -41,8 +41,8 @@ def search_diagnosis_code(chapter_code: str, category_code: str, subcategory_cod
     return results
 
 @app.post("/consultation")
-def save_consultation(user_id: int, title: str, content: str, db: Session = Depends(get_db)):
-    new_note = Note(user_id=user_id, title=title, content=content)
+def save_consultation(user_email: str, title: str, content: str, codes: List[CodeModel], db: Session = Depends(get_db)):
+    new_note = Note(user_email=user_email, title=title, content=content, codes=codes)
     db.add(new_note)
     db.commit()
     db.refresh(new_note)
@@ -54,6 +54,6 @@ def get_consultation_list(user_id: int, db: Session = Depends(get_db)):
     results = db.query(Note).filter(Note.user_id == user_id).all()
 
     if not results:
-        raise HTTPException(status_code=404, detail="No user found! Are you logged in?")
+        raise HTTPException(status_code=404, detail="User not found! Are you logged in?")
     
     return results

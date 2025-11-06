@@ -1,4 +1,4 @@
-from sqlalchemy import String, Integer, Text, ForeignKey, PrimaryKeyConstraint, create_engine
+from sqlalchemy import String, Integer, Text, ForeignKey, PrimaryKeyConstraint, create_engine, Table, Column
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship, sessionmaker, Session
 from typing import List, Generator
 
@@ -14,8 +14,7 @@ class Base(DeclarativeBase):
 class User(Base):
     __tablename__ = "users"
 
-    user_id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    email: Mapped[str] = mapped_column(String(255), unique=True, index=True, nullable=False)
+    email: Mapped[str] = mapped_column(String(255), unique=True, index=True, nullable=False, primary_key=True)
     first_name: Mapped[str] = mapped_column(String(255), nullable=False)
     last_name: Mapped[str] = mapped_column(String(255), nullable=False)
     notes: Mapped[List["Note"]] = relationship("Note", back_populates="user")
@@ -23,6 +22,16 @@ class User(Base):
     def __repr__(self) -> str:
         return f"<User(user_id={self.user_id!r}, email={self.email!r})>"
 
+class NotesCodes(Base):
+    __tablename__ = "notes_codes"
+
+    note_id: Mapped[int] = mapped_column(ForeignKey("Note.note_id"), primary_key=True)
+    chapter_code: Mapped[str] = mapped_column(ForeignKey("Code.chapter_code"), primary_key=True)
+    category_code: Mapped[str] = mapped_column(ForeignKey("Code.category_code"), primary_key=True)
+    subcategory_code: Mapped[str] = mapped_column(ForeignKey("Code.subcategory_code"), primary_key=True, default='-')
+
+    note: Mapped["Note"] = relationship(back_populates='codes')
+    code: Mapped["Code"] = relationship(back_populates='notes')
 
 class Note(Base):
     __tablename__ = "notes"
@@ -31,9 +40,12 @@ class Note(Base):
     title: Mapped[str] = mapped_column(String(255), nullable=False)
     content: Mapped[str] = mapped_column(Text, nullable=True)
     
-    user_id: Mapped[int] = mapped_column(ForeignKey("users.user_id"), nullable=False)
 
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.user_id"), nullable=False)
     user: Mapped["User"] = relationship("User", back_populates="notes")
+
+    codes: Mapped[List["NotesCodes"]] = relationship(back_populates="note")
+
 
     def __repr__(self) -> str:
         return f"<Note(note_id={self.note_id!r}, title={self.title!r})>"
@@ -42,20 +54,17 @@ class Note(Base):
 class Code(Base):
     __tablename__ = "codes"
 
-    chapter_code: Mapped[str] = mapped_column(String(1), nullable=False)
-    category_code: Mapped[str] = mapped_column(String(2), nullable=False)
-    subcategory_code: Mapped[str] = mapped_column(String(1), nullable=False, default='X')
+    chapter_code: Mapped[str] = mapped_column(String(1), primary_key=True)
+    category_code: Mapped[str] = mapped_column(String(2), primary_key=True)
+    subcategory_code: Mapped[str] = mapped_column(String(1), primary_key=True, default='-')
     
     title: Mapped[str] = mapped_column(String(255), nullable=False)
     description: Mapped[str] = mapped_column(Text, nullable=True)
 
-    __table_args__ = (
-        PrimaryKeyConstraint("chapter_code", "category_code", "subcategory_code"),
-    )
+    notes: Mapped[List["NotesCodes"]] = relationship(back_populates="code")
 
     def __repr__(self) -> str:
         return f"<Code(code={self.chapter_code}{self.category_code}.{self.subcategory_code})>"
-
 
 try:
     database_url = f"postgresql+psycopg2://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
