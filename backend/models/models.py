@@ -1,4 +1,4 @@
-from pydantic import BaseModel, StringConstraints, Field, EmailStr, ConfigDict
+from pydantic import BaseModel, StringConstraints, Field, EmailStr, ConfigDict, computed_field
 from typing import Annotated, Literal, Optional, List
 
 class UserModel(BaseModel):
