@@ -1,29 +1,35 @@
-from pydantic import BaseModel, StringConstraints, Field, EmailStr
-from typing import Annotated, Literal
+from pydantic import BaseModel, StringConstraints, Field, EmailStr, ConfigDict
+from typing import Annotated, Literal, Optional
 from math import floor, log10
 
-class User(BaseModel):
+class UserModel(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     email: EmailStr = Field(strict=True)
     first_name: Annotated[str, StringConstraints(max_length=255)]
     last_name: Annotated[str, StringConstraints(max_length=255)]
 
-class Note(BaseModel):
+
+class NoteModel(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     note_id: int = Field(strict=True)
     email: EmailStr
     title: Annotated[str, StringConstraints(min_length=1, max_length=255)]
-    content: str
+    content: Optional[str]
 
-class Code(BaseModel):
+class CodeModel(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     chapter_code: Annotated[str, StringConstraints(max_length=1, to_upper=True)]
     category_code: Annotated[str, StringConstraints(max_length=2, min_length=2, to_upper=True)]
     subcategory_code: Annotated[str, StringConstraints(max_length=1, to_upper=True)] = Field(default='X')
     title: Annotated[str, StringConstraints(min_length=1, max_length=255)]
-    description: str
+    description: Optional[str]
 
     @classmethod
     def icd_code_str(cls, repr_type: Literal['code', 'code+title', 'full']='code') -> str:
-        is_single_digit = cls.category_code < 10
-        category_code_str = f'0{cls.category_code}' if is_single_digit else f'{cls.category_code}'
+        category_code_str = f'{cls.category_code}'
         if repr_type == 'code':
             if cls.subcategory_code == 'X':
                 return f"{cls.chapter_code}{category_code_str}"
