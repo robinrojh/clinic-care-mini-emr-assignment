@@ -31,6 +31,14 @@ async function searchDiagnosis() {
     loading.value = false;
   }
 }
+
+function formatCode(code: DiagnosisCode): string {
+  const base = `${code.chapter_code}${code.category_code}`;
+  const sub = (code.subcategory_code && code.subcategory_code !== '-')
+    ? `.${code.subcategory_code}`
+    : '';
+  return `${base}${sub}`;
+}
 </script>
 
 <template>
@@ -59,7 +67,23 @@ async function searchDiagnosis() {
 
     <div v-if="results.length > 0" class="results-container">
       <h3>Results</h3>
-      <pre>{{ results }}</pre>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Title</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="code in results" :key="`${code.chapter_code}-${code.category_code}-${code.subcategory_code}`">
+            <td class="code-column">{{ formatCode(code) }}</td>
+            <td>{{ code.title }}</td>
+            <td>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <div v-else-if="!loading && !error" class="empty-state">
       Submit a search to see results.

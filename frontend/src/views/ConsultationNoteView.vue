@@ -80,6 +80,30 @@ function formatCode(code: DiagnosisCode): string {
   const sub = code.subcategory_code === 'X' ? '' : `.${code.subcategory_code}`;
   return `${base}${sub} - ${code.title}`;
 }
+
+function formatCodeSimple(code: DiagnosisCode): string {
+  const base = `${code.chapter_code}${code.category_code}`;
+  const sub = (code.subcategory_code && code.subcategory_code !== 'X')
+    ? `.${code.subcategory_code}`
+    : '';
+  return `${base}${sub}`;
+}
+
+function formatTimestamp(timestamp: string): string {
+  if (!timestamp) return 'N/A';
+  try {
+    return new Date(timestamp).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+  } catch (e) {
+    return timestamp;
+  }
+}
+
 </script>
 
 <template>
@@ -132,14 +156,39 @@ function formatCode(code: DiagnosisCode): string {
       </button>
 
       <div v-if="loadingList" class="loading-state">Loading...</div>
+
       <div v-else-if="!loadingList && consultations.length === 0" class="empty-state">
         No consultations found.
       </div>
-      <ul v-else class="consultation-list">
-        <li v-for="item in consultations" :key="item.note_id">
-          <pre>{{ item }}</pre>
-        </li>
-      </ul>
+
+      <table v-else class="data-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Codes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in consultations" :key="item.note_id">
+            <td class="timestamp-cell">
+              <!-- {{ formatTimestamp(item.create) }} -->
+            </td>
+            <td>{{ item.title }}</td>
+            <td class="content-cell">{{ item.content }}</td>
+            <td class="codes-cell">
+              <ul v-if="item.codes.length > 0" class="inner-code-list">
+                <li v-for="code in item.codes" :title="code.title!">
+                  {{ formatCodeSimple(code) }}
+                </li>
+              </ul>
+              <span v-else class="no-data">—</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
     </div>
   </div>
 </template>
