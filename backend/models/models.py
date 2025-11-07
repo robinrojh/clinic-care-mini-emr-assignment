@@ -1,5 +1,6 @@
-from pydantic import BaseModel, StringConstraints, Field, EmailStr, ConfigDict, computed_field
+from pydantic import BaseModel, StringConstraints, Field, EmailStr, ConfigDict
 from typing import Annotated, Literal, Optional, List
+from datetime import datetime
 
 class TokenModel(BaseModel):
     access_token: str
@@ -26,6 +27,7 @@ class NoteCreateModel(BaseModel):
     title: Annotated[str, StringConstraints(min_length=1, max_length=255)]
     content: Optional[str]
     codes: List['CodeModel']
+    created_at: datetime
 
 class NoteModel(BaseModel):
     model_config = ConfigDict(from_attributes=True)

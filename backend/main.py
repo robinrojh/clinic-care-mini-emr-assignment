@@ -31,17 +31,6 @@ except KeyError as e:
 except ValueError:
     raise RuntimeError("Token expiry minutes must be integers!")
 
-try:
-    SECRET_KEY = os.environ["SECRET_KEY"]
-except KeyError:
-    raise RuntimeError("SECRET_KEY environment variable is not set!")
-ALGORITHM = "HS256"
-
-try:
-    ACCESS_TOKEN_EXPIRE_MINUTES = int(os.environ.get("ACCESS_TOKEN_EXPIRE_MINUTES", "30"))
-except ValueError:
-    raise RuntimeError("ACCESS_TOKEN_EXPIRE_MINUTES must be an integer!")
-
 app = FastAPI()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 password_hash = PasswordHash.recommended()
@@ -260,7 +249,7 @@ def save_consultation(current_user: Annotated[User, Depends(get_current_user)], 
         if db_code:
             db_codes.append(db_code)
 
-    new_note = Note(email=note.email, title=note.title, content=note.content, codes=db_codes)
+    new_note = Note(email=current_user.email, title=note.title, content=note.content, codes=db_codes)
     db.add(new_note)
     db.commit()
     db.refresh(new_note)

@@ -74,6 +74,9 @@ class Code(Base):
     def __repr__(self) -> str:
         return f"<Code(code={self.chapter_code}{self.category_code}.{self.subcategory_code})>"
 
+"""
+MUST CHANGE FOR PRODUCTION!
+"""
 DB_NAME = "clinic_care"
 DB_USER = "postgres"
 DB_PASS = "asdfasdf"

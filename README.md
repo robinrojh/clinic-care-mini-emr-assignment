@@ -13,9 +13,9 @@
     - Create & read consultation notes
     - JWT authentication
 - PostgreSQL for lightweight DB
-    - Local PostgreSQL instance, including a Dockerfile for easier setup
+    - Local PostgreSQL instance
 - Pydantic for input validation and basic error handling
 
 ## Frontend Tech Stack
 - Vue 3
-- JWT authentication
+- JWT authentication for login, sign up, and access control

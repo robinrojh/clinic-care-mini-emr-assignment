@@ -3,11 +3,14 @@ import { ref, reactive, onMounted } from 'vue';
 import apiClient from '@/api';
 import type { Note, NoteForm, DiagnosisCode } from '@/types';
 import DiagnosisCodeSearch from '@/components/DiagnosisCodeSearch.vue';
+import { useAuthStore } from '@/store/auth';
+
+const authStore = useAuthStore()
 
 const defaultForm: NoteForm = {
   title: '',
   content: '',
-  email: 'rygrobin@gmail.com',
+  email: authStore.userEmail || "",
   codes: []
 };
 const newConsultation = reactive<NoteForm>({ ...defaultForm });
@@ -43,11 +46,7 @@ async function getConsultations() {
   loadingList.value = true;
   consultations.value = [];
   try {
-    const response = await apiClient.get('/consultation', {
-      params: {
-        email: newConsultation.email
-      }
-    });
+    const response = await apiClient.get('/consultation');
     consultations.value = response.data;
   } catch (err: any) {
 
@@ -113,7 +112,6 @@ function formatTimestamp(timestamp: string): string {
       <form @submit.prevent="saveConsultation">
         <div class="form-group">
           <label>Your Email:</label>
-          <input v-model="newConsultation.email" type="email" class="form-control" />
         </div>
         <div class="form-group">
           <label>Note Title:</label>
