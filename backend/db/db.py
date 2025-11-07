@@ -2,12 +2,6 @@ from sqlalchemy import String, Integer, Text, ForeignKey, PrimaryKeyConstraint, 
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship, sessionmaker, Session
 from typing import List, Generator
 
-DB_NAME = "clinic_care"
-DB_USER = "postgres"
-DB_PASS = "asdfasdf"
-DB_HOST = "localhost"
-DB_PORT = "5432"
-
 class Base(DeclarativeBase):
     pass
 
@@ -78,11 +72,29 @@ class Code(Base):
     def __repr__(self) -> str:
         return f"<Code(code={self.chapter_code}{self.category_code}.{self.subcategory_code})>"
 
+DB_NAME = "clinic_care"
+DB_USER = "postgres"
+DB_PASS = "asdfasdf"
+DB_HOST = "localhost"
+DB_PORT = "5432"
+
+def init_db():
+    """
+    Initializes the database by creating all tables.
+    """
+    try:
+        print("Creating database tables...")
+        Base.metadata.create_all(bind=engine)
+        print("Database tables created successfully.")
+    except Exception as e:
+        print(f"An error occurred during DB initialization: {e}")
+
 try:
     database_url = f"postgresql+psycopg2://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
     engine = create_engine(url=database_url)
 
     SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+    init_db()
     print("Database session created successfully!")
 except:
     print("Database session creation failed.")
@@ -97,17 +109,6 @@ def get_db() -> Generator[Session, None, None]:
         yield db
     finally:
         db.close()
-
-def init_db():
-    """
-    Initializes the database by creating all tables.
-    """
-    try:
-        print("Creating database tables...")
-        Base.metadata.create_all(bind=engine)
-        print("Database tables created successfully.")
-    except Exception as e:
-        print(f"An error occurred during DB initialization: {e}")
 
 if __name__ == "__main__":
     print("Initializing database...")
