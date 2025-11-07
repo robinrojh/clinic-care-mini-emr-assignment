@@ -231,7 +231,7 @@ def search_diagnosis_code(chapter_code: str, category_code: str, subcategory_cod
     query = db.query(Code).filter(Code.chapter_code == chapter_code)
     
     if len(category_code) > 0:
-        query = query.filter(Code.category_code == category_code)
+        query = query.filter(Code.category_code.contains(category_code))
         
     if len(subcategory_code) > 0:
         query = query.filter(Code.subcategory_code == subcategory_code)

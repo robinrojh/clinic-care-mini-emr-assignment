@@ -11,6 +11,8 @@ CREATE TABLE notes (
     title VARCHAR(255),
     content TEXT,
 
+    created_at timestamp default current_timestamp
+
     FOREIGN KEY (email) REFERENCES users(email)
 );
 

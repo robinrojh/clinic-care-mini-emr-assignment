@@ -1,6 +1,7 @@
-from sqlalchemy import String, Integer, Text, ForeignKey, PrimaryKeyConstraint, create_engine, Table, Column, ForeignKeyConstraint
+from sqlalchemy import String, Integer, Text, ForeignKey, DateTime, create_engine, Table, Column, ForeignKeyConstraint
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship, sessionmaker, Session
 from typing import List, Generator
+from datetime import datetime
 
 class Base(DeclarativeBase):
     pass
@@ -39,6 +40,7 @@ class Note(Base):
     title: Mapped[str] = mapped_column(String(255), nullable=False)
     content: Mapped[str] = mapped_column(Text, nullable=True)
     
+    created_at: Mapped[datetime] = mapped_column(DateTime)
 
     email: Mapped[str] = mapped_column(ForeignKey("users.email"), nullable=False)
     user: Mapped["User"] = relationship("User", back_populates="notes")
