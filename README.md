@@ -26,7 +26,7 @@
     - Install PostgreSQL version 16
     - `pip install -r requirements.txt` to install all required Python packages (virtual environment)
     - Create a database using the parameters in the `code_to_sql.ipynb` file from the `icd_codes` directory. These are currently hard-coded, so please do not store any sensitive information within these databases.
-    -`fastapi run` to start backend; this will initialize the database. Turn off the FastAPI server once done.
+    - `fastapi run` to start backend; this will initialize the database. Turn off the FastAPI server once done.
 - Additional backend set up (JWT & ICD-10 code DB):
     - Run the `code_processor_ipynb` in the `icd_codes` directory to process the input file (text file with codes)
     - Then, run the `code_to_sql.ipynb` file to populate the database with some ICD-10 diagnostic codes
