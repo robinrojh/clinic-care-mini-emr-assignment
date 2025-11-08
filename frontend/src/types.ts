@@ -8,10 +8,10 @@ export interface DiagnosisCode {
 export interface NoteForm {
   title: string;
   content: string;
-  email: string;
   codes: DiagnosisCode[];
 }
 
 export interface Note extends NoteForm {
   note_id: number;
+  created_at: string;
 }

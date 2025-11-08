@@ -1,16 +1,13 @@
 <script setup lang="ts">
-import { ref, reactive, onMounted } from 'vue';
+import { ref, reactive } from 'vue';
 import apiClient from '@/api';
 import type { Note, NoteForm, DiagnosisCode } from '@/types';
 import DiagnosisCodeSearch from '@/components/DiagnosisCodeSearch.vue';
-import { useAuthStore } from '@/store/auth';
-
-const authStore = useAuthStore()
+import { formatCode } from '@/utils/formatter';
 
 const defaultForm: NoteForm = {
   title: '',
   content: '',
-  email: authStore.userEmail || "",
   codes: []
 };
 const newConsultation = reactive<NoteForm>({ ...defaultForm });
@@ -31,33 +28,13 @@ async function saveConsultation() {
     await apiClient.post('/consultation', newConsultation);
     Object.assign(newConsultation, defaultForm);
     newConsultation.codes = [];
-    getConsultations();
   } catch (err: any) {
+    console.log(err)
     submitError.value = 'Failed to save: ' + (err.response?.data?.detail || err.message);
   } finally {
     submitting.value = false;
   }
 }
-
-const consultations = ref<Note[]>([]);
-const loadingList = ref<boolean>(false);
-
-async function getConsultations() {
-  loadingList.value = true;
-  consultations.value = [];
-  try {
-    const response = await apiClient.get('/consultation');
-    consultations.value = response.data;
-  } catch (err: any) {
-
-  } finally {
-    loadingList.value = false;
-  }
-}
-
-onMounted(() => {
-  getConsultations();
-});
 
 function handleCodeSelect(code: DiagnosisCode) {
   const exists = newConsultation.codes.some(
@@ -73,36 +50,6 @@ function handleCodeSelect(code: DiagnosisCode) {
 function removeCode(index: number) {
   newConsultation.codes.splice(index, 1);
 }
-
-function formatCode(code: DiagnosisCode): string {
-  const base = `${code.chapter_code}${code.category_code}`;
-  const sub = code.subcategory_code === 'X' ? '' : `.${code.subcategory_code}`;
-  return `${base}${sub} - ${code.title}`;
-}
-
-function formatCodeSimple(code: DiagnosisCode): string {
-  const base = `${code.chapter_code}${code.category_code}`;
-  const sub = (code.subcategory_code && code.subcategory_code !== 'X')
-    ? `.${code.subcategory_code}`
-    : '';
-  return `${base}${sub}`;
-}
-
-function formatTimestamp(timestamp: string): string {
-  if (!timestamp) return 'N/A';
-  try {
-    return new Date(timestamp).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-    });
-  } catch (e) {
-    return timestamp;
-  }
-}
-
 </script>
 
 <template>
@@ -110,9 +57,6 @@ function formatTimestamp(timestamp: string): string {
     <div class="form-container">
       <h2>Save Consultation</h2>
       <form @submit.prevent="saveConsultation">
-        <div class="form-group">
-          <label>Your Email:</label>
-        </div>
         <div class="form-group">
           <label>Note Title:</label>
           <input v-model="newConsultation.title" type="text" class="form-control" />
@@ -145,48 +89,6 @@ function formatTimestamp(timestamp: string): string {
         </button>
         <div v-if="submitError" class="error-message">{{ submitError }}</div>
       </form>
-    </div>
-
-    <div class="list-container">
-      <h2>Consultation List</h2>
-      <button @click="getConsultations" :disabled="loadingList" class="btn" style="margin-bottom: 10px;">
-        {{ loadingList ? 'Refreshing...' : 'Refresh' }}
-      </button>
-
-      <div v-if="loadingList" class="loading-state">Loading...</div>
-
-      <div v-else-if="!loadingList && consultations.length === 0" class="empty-state">
-        No consultations found.
-      </div>
-
-      <table v-else class="data-table">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Title</th>
-            <th>Content</th>
-            <th>Codes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="item in consultations" :key="item.note_id">
-            <td class="timestamp-cell">
-              <!-- {{ formatTimestamp(item.create) }} -->
-            </td>
-            <td>{{ item.title }}</td>
-            <td class="content-cell">{{ item.content }}</td>
-            <td class="codes-cell">
-              <ul v-if="item.codes.length > 0" class="inner-code-list">
-                <li v-for="code in item.codes" :title="code.title!">
-                  {{ formatCodeSimple(code) }}
-                </li>
-              </ul>
-              <span v-else class="no-data">—</span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
     </div>
   </div>
 </template>
