@@ -19,3 +19,10 @@
 ## Frontend Tech Stack
 - Vue 3
 - JWT authentication for login, sign up, and access control
+
+## How to Run on Local Machine
+- Frontend: `npm install`, then `npm run dev`
+- Backend:
+    - PostgreSQL version 16
+    - `pip install -r requirements.txt` to install all required Python packages (virtual environment)
+    - `fastapi run` to start backend
