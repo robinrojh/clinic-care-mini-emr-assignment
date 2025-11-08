@@ -3,6 +3,7 @@ import { ref, reactive, onMounted } from 'vue';
 import apiClient from '@/api';
 import type { Note, NoteForm, DiagnosisCode } from '@/types';
 import { formatCode, formatTimestamp } from '@/utils/formatter';
+import { router } from '@/router';
 
 
 const consultations = ref<Note[]>([]);
@@ -31,9 +32,14 @@ onMounted(() => {
     <div class="page-layout">
         <div class="list-container">
             <h2>Consultation List</h2>
-            <button @click="getConsultations" :disabled="loadingList" class="btn" style="margin-bottom: 10px;">
-                {{ loadingList ? 'Refreshing...' : 'Refresh' }}
-            </button>
+            <div class="btn-row">
+                <button @click="getConsultations" :disabled="loadingList" class="btn" style="margin-bottom: 10px;">
+                    {{ loadingList ? 'Refreshing...' : 'Refresh' }}
+                </button>
+                <button @click="router.push('consultations/post')" class="btn btn-primary submit-btn">
+                    Create New Consultation Note
+                </button>
+            </div>
 
             <div v-if="loadingList" class="loading-state">Loading...</div>
 
@@ -76,8 +82,13 @@ onMounted(() => {
 <style scoped>
 .page-layout {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 30px;
+}
+
+.btn-row {
+    display: flex;
+    justify-content: space-between;
 }
 
 .form-container,

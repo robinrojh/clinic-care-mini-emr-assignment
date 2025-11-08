@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { useAuthStore } from '@/store/auth'
-import { useRouter } from 'vue-router'
+import { router } from './router'
 
 const authStore = useAuthStore()
-const router = useRouter()
 
 function handleLogout() {
   authStore.logout()
@@ -16,7 +15,7 @@ function handleLogout() {
     <nav class="container">
       <RouterLink to="/">Diagnosis Search</RouterLink>
       <RouterLink to="/consultations">Consultations</RouterLink>
-
+      <RouterLink to="/consultations/post">Create Notes</RouterLink>
       <div class="auth-links">
         <template v-if="authStore.isLoggedIn">
           <button @click="handleLogout" class="btn btn-logout">Logout</button>

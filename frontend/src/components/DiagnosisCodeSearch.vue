@@ -80,7 +80,7 @@ function formatCode(code: DiagnosisCode): string {
 <template>
     <div>
         <div class="form-group">
-            <label for="code-search">Search Code (e.g., "A010"):</label>
+            <label for="code-search">Search Code (e.g., "I010"):</label>
             <input id="code-search" v-model.trim="searchQuery" type="text" placeholder="Start typing to search..."
                 class="form-control" />
         </div>

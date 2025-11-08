@@ -96,7 +96,7 @@ function removeCode(index: number) {
 <style scoped>
 .page-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 30px;
 }
 

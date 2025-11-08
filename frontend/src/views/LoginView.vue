@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/store/auth'
+import { router } from '@/router'
 
 const email = ref('')
 const password = ref('')
@@ -9,7 +9,6 @@ const error = ref<string | null>(null)
 const loading = ref(false)
 
 const authStore = useAuthStore()
-const router = useRouter()
 
 async function handleLogin() {
     if (!email.value || !password.value) {

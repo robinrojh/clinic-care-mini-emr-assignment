@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
-import { useRouter } from 'vue-router'
 import apiClient from '@/api'
+import { router } from '@/router'
 
 const formData = reactive({
     email: '',
@@ -12,7 +12,6 @@ const formData = reactive({
 
 const error = ref<string | null>(null)
 const loading = ref(false)
-const router = useRouter()
 
 async function handleSubmit() {
     loading.value = true

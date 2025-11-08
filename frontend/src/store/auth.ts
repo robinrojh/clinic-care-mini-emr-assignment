@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-import { useRouter } from 'vue-router'
 import apiClient from '@/api'
+import { router } from '@/router'
 
 interface TokenPayload {
     access_token: string
@@ -10,7 +10,6 @@ interface TokenPayload {
 export const useAuthStore = defineStore('auth', () => {
     const accessToken = ref<string | null>(null)
     const userEmail = ref<string | null>(null)
-    const router = useRouter()
 
     const isLoggedIn = computed(() => !!accessToken.value)
 

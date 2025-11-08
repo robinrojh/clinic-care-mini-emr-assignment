@@ -5,15 +5,22 @@ import DiagnosisSearchView from '@/views/DiagnosisSearchView.vue'
 import ConsultationNoteView from '@/views/ConsultationNoteView.vue'
 import LoginView from '@/views/LoginView.vue'
 import SignUpView from '@/views/SignUpView.vue'
+import ConsultationListView from '@/views/ConsultationListView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     { path: '/', name: 'search', component: DiagnosisSearchView },
     {
+      path: '/consultations/post',
+      name: 'consultation-post',
+      component: ConsultationNoteView,
+      meta: { requiresAuth: true },
+    },
+    {
       path: '/consultations',
       name: 'consultations',
-      component: ConsultationNoteView,
+      component: ConsultationListView,
       meta: { requiresAuth: true },
     },
     {
