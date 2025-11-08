@@ -217,13 +217,13 @@ async def logout(response: Response):
 @app.get("/diagnosis", response_model=List[CodeModel])
 def search_diagnosis_code(chapter_code: str, category_code: str, subcategory_code: str, db: Session = Depends(get_db)):
     
-    query = db.query(Code).filter(Code.chapter_code == chapter_code)
+    query = db.query(Code).filter(Code.chapter_code.icontains(chapter_code))
     
     if len(category_code) > 0:
-        query = query.filter(Code.category_code.contains(category_code))
+        query = query.filter(Code.category_code.icontains(category_code))
         
     if len(subcategory_code) > 0:
-        query = query.filter(Code.subcategory_code == subcategory_code)
+        query = query.filter(Code.subcategory_code.icontains(subcategory_code))
         
     results = query.all()
     

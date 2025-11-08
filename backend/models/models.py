@@ -23,11 +23,9 @@ class UserCreateModel(UserModel):
     password: str
 
 class NoteCreateModel(BaseModel):
-    email: EmailStr
     title: Annotated[str, StringConstraints(min_length=1, max_length=255)]
     content: Optional[str]
     codes: List['CodeModel']
-    created_at: datetime
 
 class NoteModel(BaseModel):
     model_config = ConfigDict(from_attributes=True)

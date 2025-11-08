@@ -40,7 +40,7 @@ class Note(Base):
     title: Mapped[str] = mapped_column(String(255), nullable=False)
     content: Mapped[str] = mapped_column(Text, nullable=True)
     
-    created_at: Mapped[datetime] = mapped_column(DateTime)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.now())
 
     email: Mapped[str] = mapped_column(ForeignKey("users.email"), nullable=False)
     user: Mapped["User"] = relationship("User", back_populates="notes")
